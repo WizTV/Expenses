@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="lHh Lpr lFf " class="">
+  <q-layout view="lHh Lpr lFf ">
     <q-header
       style="
         height: 150px;
@@ -7,6 +7,9 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
       "
       elevated
       class="flex column"
@@ -28,6 +31,7 @@
           <q-item
             clickable
             v-ripple
+            @click="monthHandler(month.month)"
             v-for="month in months"
             v-bind:key="month.id"
           >
@@ -35,7 +39,9 @@
               <q-icon name="today" class="text-blue" />
             </q-item-section>
 
-            <q-item-section> {{ month.month }} </q-item-section>
+            <q-item-section>
+              {{ month.month }}
+            </q-item-section>
           </q-item>
         </q-list>
       </q-scroll-area>
@@ -66,6 +72,12 @@ import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "MainLayout",
+
+  methods: {
+    monthHandler(m) {
+      return console.log("Hello there", m);
+    },
+  },
 
   data() {
     return {
