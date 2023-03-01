@@ -1,16 +1,17 @@
 <template>
-  <q-layout view="lHh Lpr lFf ">
-    <q-header style="height: 150px" elevated>
+  <q-layout view="lHh Lpr lFf " class="">
+    <q-header
+      style="
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      "
+      elevated
+      class="flex column"
+    >
       <q-toolbar>
-        <!-- <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer"
-        /> -->
-
         <q-toolbar-title> Monthly expenses </q-toolbar-title>
       </q-toolbar>
     </q-header>
@@ -27,14 +28,14 @@
           <q-item
             clickable
             v-ripple
-            v-for="item in months"
-            v-bind:key="item.id"
+            v-for="month in months"
+            v-bind:key="month.id"
           >
             <q-item-section avatar>
-              <q-icon name="inbox" />
+              <q-icon name="today" class="text-blue" />
             </q-item-section>
 
-            <q-item-section> {{ item }} </q-item-section>
+            <q-item-section> {{ month.month }} </q-item-section>
           </q-item>
         </q-list>
       </q-scroll-area>
@@ -63,62 +64,62 @@
 <script>
 import { defineComponent } from "vue";
 
-const months = [
-  { name: "apple", id: 1 },
-  { name: "orange", id: 2 },
-];
-
 export default defineComponent({
   name: "MainLayout",
-  // months: [
-  //   {
-  //     id: 0,
-  //     month: "January",
-  //   },
-  //   {
-  //     id: 1,
-  //     month: "February",
-  //   },
-  //   {
-  //     id: 2,
-  //     month: "March",
-  //   },
-  //   {
-  //     id: 3,
-  //     month: "April",
-  //   },
-  //   {
-  //     id: 4,
-  //     month: "May",
-  //   },
-  //   {
-  //     id: 5,
-  //     month: "June",
-  //   },
-  //   {
-  //     id: 6,
-  //     month: "July",
-  //   },
-  //   {
-  //     id: 7,
-  //     month: "August",
-  //   },
-  //   {
-  //     id: 8,
-  //     month: "September",
-  //   },
-  //   {
-  //     id: 9,
-  //     month: "October",
-  //   },
-  //   {
-  //     id: 10,
-  //     month: "November",
-  //   },
-  //   {
-  //     id: 11,
-  //     month: "December",
-  //   },
-  // ],
+
+  data() {
+    return {
+      months: [
+        {
+          id: 0,
+          month: "January",
+        },
+        {
+          id: 1,
+          month: "February",
+        },
+        {
+          id: 2,
+          month: "March",
+        },
+        {
+          id: 3,
+          month: "April",
+        },
+        {
+          id: 4,
+          month: "May",
+        },
+        {
+          id: 5,
+          month: "June",
+        },
+        {
+          id: 6,
+          month: "July",
+        },
+        {
+          id: 7,
+          month: "August",
+        },
+        {
+          id: 8,
+          month: "September",
+        },
+        {
+          id: 9,
+          month: "October",
+        },
+        {
+          id: 10,
+          month: "November",
+        },
+        {
+          id: 11,
+          month: "December",
+        },
+      ],
+    };
+  },
 });
 </script>
