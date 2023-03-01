@@ -1,42 +1,57 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="lHh Lpr lFf ">
+    <q-header style="height: 150px" elevated>
       <q-toolbar>
-        <q-btn
+        <!-- <q-btn
           flat
           dense
           round
           icon="menu"
           aria-label="Menu"
           @click="toggleLeftDrawer"
-        />
+        /> -->
 
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
+        <q-toolbar-title> Monthly expenses </q-toolbar-title>
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
+    <q-drawer show-if-above :width="200" :breakpoint="400">
+      <q-scroll-area
+        style="
+          height: calc(100% - 150px);
+          margin-top: 150px;
+          border-right: 1px solid #ddd;
+        "
+      >
+        <q-list padding>
+          <q-item
+            clickable
+            v-ripple
+            v-for="item in months"
+            v-bind:key="item.id"
+          >
+            <q-item-section avatar>
+              <q-icon name="inbox" />
+            </q-item-section>
 
-        <EssentialLink
-          v-for="link in essentialLinks"
-          :key="link.title"
-          v-bind="link"
-        />
-      </q-list>
+            <q-item-section> {{ item }} </q-item-section>
+          </q-item>
+        </q-list>
+      </q-scroll-area>
+
+      <q-img
+        class="absolute-top"
+        src="https://cdn.quasar.dev/img/material.png"
+        style="height: 150px"
+      >
+        <div class="absolute-bottom bg-transparent">
+          <q-avatar size="56px" class="q-mb-sm">
+            <img src="https://cdn.quasar.dev/img/boy-avatar.png" />
+          </q-avatar>
+          <div class="text-weight-bold">Paweł Więzik</div>
+          <div>pawel.wiezik@gmail.com</div>
+        </div>
+      </q-img>
     </q-drawer>
 
     <q-page-container>
@@ -46,71 +61,64 @@
 </template>
 
 <script>
-import { defineComponent, ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
+import { defineComponent } from "vue";
 
-const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
+const months = [
+  { name: "apple", id: 1 },
+  { name: "orange", id: 2 },
+];
 
 export default defineComponent({
-  name: 'MainLayout',
-
-  components: {
-    EssentialLink
-  },
-
-  setup () {
-    const leftDrawerOpen = ref(false)
-
-    return {
-      essentialLinks: linksList,
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
-})
+  name: "MainLayout",
+  // months: [
+  //   {
+  //     id: 0,
+  //     month: "January",
+  //   },
+  //   {
+  //     id: 1,
+  //     month: "February",
+  //   },
+  //   {
+  //     id: 2,
+  //     month: "March",
+  //   },
+  //   {
+  //     id: 3,
+  //     month: "April",
+  //   },
+  //   {
+  //     id: 4,
+  //     month: "May",
+  //   },
+  //   {
+  //     id: 5,
+  //     month: "June",
+  //   },
+  //   {
+  //     id: 6,
+  //     month: "July",
+  //   },
+  //   {
+  //     id: 7,
+  //     month: "August",
+  //   },
+  //   {
+  //     id: 8,
+  //     month: "September",
+  //   },
+  //   {
+  //     id: 9,
+  //     month: "October",
+  //   },
+  //   {
+  //     id: 10,
+  //     month: "November",
+  //   },
+  //   {
+  //     id: 11,
+  //     month: "December",
+  //   },
+  // ],
+});
 </script>
