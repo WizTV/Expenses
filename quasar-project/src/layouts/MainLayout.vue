@@ -31,7 +31,7 @@
           <q-item
             clickable
             v-ripple
-            @click="monthHandler(month.month)"
+            @click="monthHandler(month.id)"
             v-for="month in months"
             v-bind:key="month.id"
           >
@@ -83,51 +83,51 @@ export default defineComponent({
     return {
       months: [
         {
-          id: 0,
+          id: 1,
           month: "January",
         },
         {
-          id: 1,
+          id: 2,
           month: "February",
         },
         {
-          id: 2,
+          id: 3,
           month: "March",
         },
         {
-          id: 3,
+          id: 4,
           month: "April",
         },
         {
-          id: 4,
+          id: 5,
           month: "May",
         },
         {
-          id: 5,
+          id: 6,
           month: "June",
         },
         {
-          id: 6,
+          id: 7,
           month: "July",
         },
         {
-          id: 7,
+          id: 8,
           month: "August",
         },
         {
-          id: 8,
+          id: 9,
           month: "September",
         },
         {
-          id: 9,
+          id: 10,
           month: "October",
         },
         {
-          id: 10,
+          id: 11,
           month: "November",
         },
         {
-          id: 11,
+          id: 12,
           month: "December",
         },
       ],
