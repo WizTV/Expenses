@@ -11,7 +11,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        box-shadow: 4px 10px 20px grey;
+        box-shadow: 4px 10px 20px black;
       "
     >
       <h3 class="text-bold">Log in to Your account</h3>
@@ -19,7 +19,8 @@
         <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
           <q-input
             filled
-            v-model="name"
+            type="text"
+            v-model="mail"
             label="Your e-mail"
             hint="E-mail"
             lazy-rules
@@ -30,14 +31,15 @@
 
           <q-input
             filled
-            v-model="name"
-            label="Your password"
-            hint="password"
+            type="text"
+            v-model="password"
+            label="Your password *"
             lazy-rules
             :rules="[
               (val) => (val && val.length > 0) || 'Please enter your password',
             ]"
           />
+
           <div>
             <q-btn label="Submit" type="submit" color="primary" />
             <q-btn
