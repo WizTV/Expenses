@@ -11,10 +11,10 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-        box-shadow: ;
+        box-shadow: 4px 10px 20px grey;
       "
     >
-      <h3 class="text-bold">Log in to you account</h3>
+      <h3 class="text-bold">Log in to Your account</h3>
       <div class="q-pa-md" style="max-width: 400px">
         <q-form @submit="onSubmit" @reset="onReset" class="q-gutter-md">
           <q-input
